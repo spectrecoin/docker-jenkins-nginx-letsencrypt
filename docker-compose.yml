@@ -1,11 +1,15 @@
-version: '2'
+version: '2.3'
 
 services:
 
   jenkins:
-    image: jenkins/jenkins:lts
+    image: jenkins/jenkins:latest
     volumes:
-      - 'jenkins_home:/var/jenkins_home'
+    - type: volume
+      source: jenkins_home
+      target: /var/jenkins_home
+      volume:
+        no_copy: true
     ports:
       - "8080"
       - "50000"
@@ -27,9 +31,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - "./nginx/vhost.d:/etc/nginx/vhost.d"
-      - "./nginx/html:/usr/share/nginx/html"
-      - "./nginx/certs:/etc/nginx/certs"
+      - "/home/admin/nginx/vhost.d:/etc/nginx/vhost.d"
+      - "/home/admin/nginx/html:/usr/share/nginx/html"
+      - "/home/admin/nginx/certs:/etc/nginx/certs"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
 
   letsencrypt-nginx-proxy-companion:
@@ -41,3 +45,4 @@ services:
 
 volumes:
   jenkins_home:
+    external: true
