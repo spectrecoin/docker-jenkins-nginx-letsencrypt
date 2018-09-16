@@ -2,6 +2,15 @@
 
 Dockerised Jenkins with SSL support using Nginx and Let's Encrypt
 
+## Changes and additions for Spectrecoin
+
+* Updated hostname entries
+* Using named volume for Jenkins home directory
+* Expose port 50000 for build slaves
+* Use dedicated path to store nginx content
+
+**Default readme content below here**
+
 # Requirements
 
 Docker and docker-compose:
