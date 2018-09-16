@@ -5,9 +5,10 @@ services:
   jenkins:
     image: jenkins/jenkins:lts
     volumes:
-      - './jenkins_home:/var/jenkins_home'
+      - 'jenkins_home:/var/jenkins_home'
     ports:
       - "8080"
+      - "50000"
 
   nginx:
     image: nginx
@@ -16,9 +17,9 @@ services:
     volumes:
       - "./etc/nginx/conf.d/:/etc/nginx/conf.d/"
     environment:
-      VIRTUAL_HOST: example.com
-      LETSENCRYPT_HOST: example.com
-      LETSENCRYPT_EMAIL: youremail@example.com
+      VIRTUAL_HOST: ci.spectreproject.io
+      LETSENCRYPT_HOST: ci.spectreproject.io
+      LETSENCRYPT_EMAIL: helix@spectreproject.io
 
   nginx-proxy:
     image: jwilder/nginx-proxy
