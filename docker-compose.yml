@@ -39,3 +39,5 @@ services:
     volumes_from:
       - "nginx-proxy"
 
+volumes:
+  jenkins_home:
