@@ -12,7 +12,7 @@ services:
         no_copy: true
     ports:
       - "8080"
-      - "50000"
+      - "50000:50000"
 
   nginx:
     image: nginx
